@@ -1,0 +1,202 @@
+{% macro hmrcAuiHeaderTabs(options) %}
+<nav class="aui-navigation" aria-label="Adviser UI tabs">
+  <ul class="aui-tabs">
+    <li class="aui-tab {% if options.homeTab.active %}aui-tab--active{% endif %}">
+      <a href="{{ options.homeTab.href }}" style="color: inherit;"
+        class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">
+        <i class="pi pi-home" aria-hidden="true"></i>
+        {% if options.homeTab.text %}{{ options.homeTab.text }}{% else %}Home{% endif %}
+      </a>
+    </li>
+    {% for tab in options.tabs %}
+    <li class="aui-tab {% if tab.active %}aui-tab--active{% endif %}">
+      <a href="{{ tab.href }}" style="color: inherit;"
+        class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">
+        {{ tab.text }}
+        {% if tab.closeTab %}
+        <a href="{{ tab.closeTab.href }}" class="aui-tab__button aui-button" title="Close tab">
+          <i class="pi pi-close" aria-hidden="true"></i>
+        </a>
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endmacro %}
+
+{% macro hmrcAuiHeader(options) %}
+<header class="aui-header">
+  <div class="aui-header__service">
+    <a class="aui-header__logo" href="{{ options.logo.href }}" title="{{ options.logo.title }}">
+      <img src="{{ options.logo.url }}" aria-hidden="true" alt="{{ options.logo.title }}">
+    </a>
+    {% if options.serviceName %}
+      <p class="aui-header__service-name govuk-!-margin-bottom-0">
+        {{ options.serviceName }}
+      </p>
+    {% endif %}
+    {% if options.newPopover %}
+      {{ options.newPopover.html | safe }}
+    {% endif %}
+  </div>
+  <div class="aui-header__actions">
+    {% for item in options.actions %}
+      {% if item.popover %}
+        {% set buttonHtml %}
+          <i class="pi pi-{{ item.icon }}" aria-hidden="true"></i>
+        {% endset %}
+
+        {% from "./popover.njk" import hmrcPegaPopover %}
+
+        {{ hmrcAuiPopover({
+          trigger: {
+            id: item.id,
+            classes: "aui-header__action-button aui-button",
+            html: buttonHtml
+          },
+          popover: {
+            html: item.popover.html
+          }
+        }) }}
+      {% else %}
+        <button id="{{ item.id }}" class="aui-header__action-button aui-button" title="{{ item.title }}">
+          <i class="pi pi-{{ item.icon }}" aria-hidden="true"></i>
+        </button>
+      {% endif %}
+    {% endfor %}
+  </div>
+</header>
+{% endmacro %}
+
+{% macro hmrcAuiSidebar(options) %}
+  <ul class="aui-sidebar" aria-label="Adviser UI sidebar navigation">
+    {% for item in options.items %}
+      <li class="{% if item.active %}aui-sidebar__item--active{% endif %}">
+        <a href="{{ item.href }}" style="margin: 0 !important; color: currentColor !important;" class="aui-sidebar__item govuk-body-s govuk-link--no-underline govuk-link--no-visited-state govuk-!-margin-0">
+          <i class="pi {% if item.active %}pi-{{ item.icon }}-solid{% else %}pi-{{ item.icon }}{% endif %}"></i>
+          {{ item.text or item.html | safe }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+{% macro hmrcAuiInformationBanner(options) %}
+<section class="aui-information-banner" aria-label="Top panel">
+  {% for item in options.bannerItems %}
+  <div class="aui-information-banner__item">
+
+    {% if item.heading %}
+    <p class="aui-information-banner__heading">{{ item.heading }}</p>
+    {% endif %}
+
+    {{ item.html | safe }}
+  </div>
+  {% endfor %}
+</section>
+{% endmacro %}
+
+{# This modal is not 100% accessible as it doesn't trap focus #}
+{% macro hmrcAuiModal(options) %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const trigger = document.querySelector("#{{ options.trigger.id }}");
+    const close = document.querySelector("#aui-modal__close");
+    const modal = document.querySelector("#aui-modal");
+    const modalOverlay = document.querySelector("#aui-modal-overlay");
+
+    trigger.addEventListener("click", function (event) {
+      modalOverlay.classList.add("aui-modal-overlay--visible");
+      close.focus();
+    });
+
+    close.addEventListener("click", function (event) {
+      modalOverlay.classList.remove("aui-modal-overlay--visible");
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!modal.contains(event.target) && !trigger.contains(event.target)) {
+        modalOverlay.classList.remove("aui-modal-overlay--visible")
+      }
+    })
+  });
+</script>
+
+<div id="aui-modal-overlay" class="aui-modal-overlay {% if options.show %}aui-modal-overlay--visible{% endif %}">
+  <div class="aui-modal" id="aui-modal" role="dialog" aria-modal="true" aria-labelledby="aui-modal__heading">
+    <div class="aui-modal__header" tabindex="-1">
+      {% if options.heading %}
+        {% if options.heading.text %}
+          <h1 style="margin: 0;" class="govuk-heading-m">
+            {{ options.heading.text }}
+          </h1>
+        {% else %}
+          {{ options.heading.html | safe }}
+        {% endif %}
+      {% else %}
+        <h1 style="margin: 0;" class="govuk-heading-m">
+          Modal header
+        </h1>
+      {% endif %}
+      <button id="aui-modal__close" class="aui-button" title="Click or press enter key to cancel this action">
+        <i class="pi pi-close" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="aui-modal__content govuk-body" tabindex="-1" style="margin: 0;">
+      {{ options.content.html | safe }}
+    </div>
+    {% if options.footer %}
+    <div class="aui-modal__footer" tabindex="-1">
+      {{ options.footer.html | safe }}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{# This popover is not 100% accessible as it doesn't trap focus, nor reposition on window resize #}
+{% macro hmrcAuiPopover(options) %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const trigger = document.querySelector("#{{ options.trigger.id }}");
+    const popover = document.querySelector("#{{ options.popover.id }}");
+
+    trigger.addEventListener("click", togglePopover);
+
+    trigger.addEventListener("keyup", function (event) {
+      if (event.key === "Enter" || event.key === "Space") {
+        togglePopover(event);
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!popover.contains(event.target) && !trigger.contains(event.target)) {
+        popover.classList.remove("aui-popover__content--visible")
+        trigger.ariaExpanded = false;
+      }
+    });
+
+    function togglePopover(event) {
+      popover.classList.toggle("aui-popover__content--visible")
+      if (popover.classList.contains("aui-popover__content--visible")) {
+        trigger.ariaExpanded = true;
+        popover.focus();
+      } else {
+        trigger.ariaExpanded = false
+      }
+    }
+  })
+</script>
+
+<div class="aui-popover">
+  <button class="{% if options.trigger.classes %}{{ options.trigger.classes }}{% else %}aui-button{% endif %}" 
+    id="{{ options.trigger.id }}" title="{{ options.trigger.title }}. Press Enter key or Spacebar to open the menu" aria-expanded="false"
+    aria-haspopup="true" aria-controls="{{ options.popover.id }}">
+    {{ options.trigger.html | safe }}
+  </button>
+  <div class="aui-popover__content" id="{{ options.popover.id }}" aria-labelledby="{{ options.trigger.id }}">
+    {{ options.popover.html | safe }}
+  </div>
+</div>
+{% endmacro %}

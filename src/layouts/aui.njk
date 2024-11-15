@@ -1,0 +1,85 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% from "common/aui-macros.html" import hmrcAuiPopover %}
+{% from "common/aui-macros.html" import hmrcAuiHeader %}
+{% from "common/aui-macros.html" import hmrcAuiHeaderTabs %}
+{% from "common/aui-macros.html" import hmrcAuiSidebar %}
+
+{% block pageTitle %}
+HMRC Adviser UI
+{% endblock %}
+
+{% set serviceName %}
+ADVISER UI
+{% endset %}
+
+{% set mainClasses = "aui-container" %}
+{% set containerClasses = "aui-container" %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <link rel="stylesheet" href="/public/sass/pega-icons.css">
+{% endblock %}
+
+{% block header %}
+  {% set newPopoverHtml %}
+  {{ hmrcAuiPopover({
+    trigger: {
+      id: "aui-header__service-button",
+      title: "New",
+      html: "<span class='aui-header__service-button'><i class='pi pi-plus' aria-hidden='true'></i> New</span>"
+    },
+    popover: {
+      id: "aui-header__service-button-popover",
+      html: ""
+    }
+  }) }}
+  {% endset %}
+
+  {{ hmrcAuiHeader({
+    logo: {
+      url: "/public/svg/hmrc-logo-white.svg",
+      href: "#",
+      title: "HM Revenue and Customs - Home"
+    },
+    serviceName: serviceName,
+    newPopover: {
+      html: newPopoverHtml
+    },
+    actions: [
+      {
+        title: "Start a call, your status is Logged Off",
+        icon: "phone-solid"
+      },
+      {
+        title: "Start my day",
+        icon: "robot"
+      },
+      {
+        title: "Profile",
+        icon: "user-solid"
+      }
+    ]
+  }) }}
+
+  {{ hmrcAuiHeaderTabs({
+    homeTab: {
+      active: true
+    }
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="{{ auiMainClasses }}">
+    {% block beforePage %}{% endblock %}
+
+    <section class="{{ auiSectionClasses }}" aria-label="Adviser UI page">
+      {% if pageHeading %}
+        <h1 class="govuk-heading-l aui-page-heading">{{ pageHeading }}</h1>
+      {% endif %}
+      <div class="{{ auiPageClasses }}">
+        {% block page %}{% endblock %}
+      </div>
+    </section>
+  </div>
+{% endblock %}

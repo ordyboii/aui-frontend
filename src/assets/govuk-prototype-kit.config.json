@@ -1,0 +1,35 @@
+{
+  "pluginDependencies": [
+    {
+      "packageName": "govuk-frontend",
+      "minVersion": "5.7.1"
+    }
+  ],
+  "assets": ["/assets/", "/images/profile.png"],
+  "stylesheets": ["/aui.css"],
+  "scripts": ["/aui.js"],
+  "importNunjucksMacrosInto": [
+    "/aui/layouts/aui.njk",
+    "/aui/layouts/aui-with-sidebar.njk",
+    "/aui/layouts/aui-with-case.njk"
+  ],
+  "templates": [
+    {
+      "path": "/aui/templates/aui.njk",
+      "name": "Adviser UI page",
+      "type": "nunjucks"
+    },
+    {
+      "path": "/aui/templates/aui-with-sidebar.njk",
+      "name": "Adviser UI page with main sidebar",
+      "type": "nunjucks"
+    },
+    {
+      "path": "/aui/templates/aui-with-case.njk",
+      "name": "Adviser UI page with co-existence Pega Constellation case",
+      "type": "nunjucks"
+    }
+  ],
+  "nunjucksPath": ["/"],
+  "nunjucksMacros": []
+}

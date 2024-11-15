@@ -10,10 +10,12 @@
     "Adviser UI"
   ],
   "author": {
-    "name": "Jake Ord"
+    "name": "Ordyboii"
   },
   "license": "Apache-2.0",
   "devDependencies": {
+    "@types/node": "^22.9.0",
+    "sass": "^1.81.0",
     "vite": "^5.4.11"
   }
 }
