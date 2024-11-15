@@ -1,0 +1,19 @@
+{
+  "name": "aui-frontend",
+  "version": "1.0.0",
+  "description": "Design patterns for Adviser UI",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "Adviser UI"
+  ],
+  "author": {
+    "name": "Jake Ord"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}
