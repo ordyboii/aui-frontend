@@ -1,9 +1,9 @@
 {% extends "govuk-prototype-kit/layouts/unbranded.html" %}
 
-{% from "common/aui-macros.html" import hmrcAuiPopover %}
-{% from "common/aui-macros.html" import hmrcAuiHeader %}
-{% from "common/aui-macros.html" import hmrcAuiHeaderTabs %}
-{% from "common/aui-macros.html" import hmrcAuiSidebar %}
+{% from "../components/aui-popover/macro.njk" import auiPopover %}
+{% from "../components/aui-header/macro.njk" import auiHeader %}
+{% from "../components/aui-navigation/macro.njk" import auiNavigation %}
+{% from "../components/aui-sidebar/macro.njk" import auiSidebar %}
 
 {% block pageTitle %}
 HMRC Adviser UI
@@ -23,7 +23,7 @@ ADVISER UI
 
 {% block header %}
   {% set newPopoverHtml %}
-  {{ hmrcAuiPopover({
+  {{ auiPopover({
     trigger: {
       id: "aui-header__service-button",
       title: "New",
@@ -36,7 +36,7 @@ ADVISER UI
   }) }}
   {% endset %}
 
-  {{ hmrcAuiHeader({
+  {{ auiHeader({
     logo: {
       url: "/public/svg/hmrc-logo-white.svg",
       href: "#",
@@ -62,7 +62,7 @@ ADVISER UI
     ]
   }) }}
 
-  {{ hmrcAuiHeaderTabs({
+  {{ auiNavigation({
     homeTab: {
       active: true
     }

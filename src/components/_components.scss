@@ -64,126 +64,10 @@ body {
   box-shadow: 0 2px 0 var(--govuk-black);
 }
 
-.aui-header {
-  background-color: var(--hmrc-green);
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.aui-header__logo {
-  width: 100px;
-}
-
-.aui-header__service {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.aui-header__service-name {
-  color: var(--govuk-white);
-  text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-}
-
-.aui-header__service-button {
-  margin: 0;
-  font-size: 14px;
-  background: none;
-  border: 0;
-  padding: 0;
-  color: var(--govuk-white);
-}
-
-.aui-header__service-button:hover {
-  background: none;
-}
-
-.aui-header__actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.aui-header__action-button {
-  margin: 0;
-  padding: 4px;
-  font-size: 16px;
-  background: var(--govuk-white);
-  border: 0;
-  border-radius: 50%;
-  color: var(--govuk-black);
-}
-
-.aui-header__action-button:hover {
-  background: var(--govuk-white);
-  color: var(--govuk-black);
-}
-
-.aui-navigation {
-  background-color: var(--hmrc-green-offset);
-}
-
-.aui-tabs {
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-  flex-wrap: nowrap;
-  text-wrap: nowrap;
-}
-
-.aui-tab {
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--govuk-white);
-  border-right: 1px solid lightgrey;
-  border-left: 1px solid lightgray;
-  cursor: pointer;
-}
-
-.aui-tab:hover {
-  background-color: var(--govuk-white);
-  color: var(--govuk-black);
-}
-
-.aui-tab--active {
-  background: var(--govuk-white);
-  color: var(--govuk-black);
-  border-left: 0;
-  border-right: 0;
-}
-
-.aui-tab__button {
-  border: 0;
-  background: none;
-  margin: 0;
-  padding: 0;
-  font-size: 12px;
-  color: var(--govuk-white);
-}
-
-.aui-tab__button:hover {
-  color: var(--govuk-black);
-  background: none;
-}
-
 .aui-grid-one-quarter {
   height: 100%;
   display: grid;
   grid-template-columns: 0.2fr 1fr;
-}
-
-.aui-sidebar {
-  background: var(--govuk-light-grey);
-  border-right: 1px solid var(--govuk-black);
 }
 
 .aui-page-content {
@@ -195,128 +79,6 @@ body {
   background: var(--govuk-light-grey);
   padding: 10px;
   margin: 0;
-}
-
-.aui-sidebar__item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  color: var(--govuk-black);
-  padding: 10px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.aui-sidebar__item--active {
-  color: var(--govuk-blue);
-}
-
-.aui-sidebar__item:hover {
-  background: var(--govuk-white);
-}
-
-.aui-sidebar__item:focus {
-  background: var(--govuk-focus);
-}
-
-.aui-information-banner {
-  background: var(--govuk-white);
-  box-shadow: 0px 2px 10px lightgrey;
-  display: grid;
-  grid-template-columns: repeat(5, 0.25fr);
-}
-
-@media (max-width: 1024px) {
-  .aui-information-banner {
-    grid-template-columns: 1fr;
-  }
-
-  .aui-information-banner__item:not(:first-of-type) {
-    border-top: 1px dashed lightgrey;
-    border-right: 0;
-  }
-}
-
-.aui-information-banner__item {
-  padding: 16px 32px;
-  border-right: 1px dashed lightgrey;
-}
-
-.aui-information-banner__heading {
-  font-size: 24px;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.aui-modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.2);
-  display: none;
-  place-content: center;
-}
-
-.aui-modal-overlay--visible {
-  display: grid;
-}
-
-/* Overridden width 300px */
-.aui-modal {
-  min-width: 640px;
-  max-height: 90vh;
-  background: var(--govuk-white);
-  border: 1px solid var(--govuk-black);
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-
-.aui-modal__header {
-  display: flex;
-  gap: 8px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--govuk-light-grey);
-}
-
-.aui-modal__content {
-  padding: 12px;
-  overflow-y: auto;
-}
-
-.aui-modal__footer {
-  padding: 8px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.aui-popover {
-  position: relative;
-}
-
-.aui-popover__content {
-  width: max-content;
-  display: none;
-  position: absolute;
-  z-index: 998;
-  top: 20px;
-  left: 10px;
-  background: var(--govuk-white);
-  border: 1px solid var(--govuk-black);
-  padding: 8px;
-}
-
-.aui-popover__content:focus {
-  outline: 3px solid var(--govuk-focus);
-}
-
-.aui-popover__content--visible {
-  display: block;
 }
 
 .aui-link {
@@ -337,18 +99,16 @@ body {
   color: var(--hmrc-green);
 }
 
-.govuk-link:hover {
-  text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
-  -webkit-text-decoration-skip-ink: none;
-  text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
-  text-decoration-skip: none;
-}
-
 .aui-link:visited {
   color: var(--hmrc-green);
 }
 
+@import "aui-header/_macro.scss";
+@import "aui-navigation/_macro.scss";
+@import "aui-sidebar/_macro.scss";
+@import "aui-information-banner/_macro.scss";
+@import "aui-modal/_macro.scss";
+@import "aui-popover/_macro.scss";
 @import "aui-constellation-case/_macro.scss";
 @import "aui-constellation-field-value-list/_macro.scss";
 @import "aui-constellation-meta-list/_macro.scss";

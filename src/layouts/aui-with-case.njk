@@ -1,18 +1,44 @@
-{% extends "govuk-prototype-kit/layouts/unbranded.html" %} {% block pageTitle %}
-HMRC Adviser UI {% endblock %} {% set serviceName %} ADVISER UI {% endset %} {%
-set mainClasses = "aui-container" %} {% set containerClasses = "aui-container"
-%} {% block stylesheets %}
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %} 
+
+{% from "../components/aui-popover/macro.njk" import auiPopover %}
+{% from "../components/aui-header/macro.njk" import auiHeader %}
+{% from "../components/aui-navigation/macro.njk" import auiNavigation %}
+{% from "../components/aui-information-banner/macro.njk" import auiInformationBanner %}
+{% from "../components/aui-constellation-field-value-list/macro.njk" import auiConstellationFieldValueList %}
+{% from "../components/aui-constellation-case/macro.njk" import auiConstellationCase %}
+
+{% block pageTitle %}
+HMRC Adviser UI 
+{% endblock %} 
+
+{% set serviceName %} 
+ADVISER UI 
+{% endset %} 
+
+{% set mainClasses = "aui-container" %} 
+{% set containerClasses = "aui-container" %} 
+
+{% block stylesheets %}
 {{ super() }}
 <link rel="stylesheet" href="/public/sass/pega-icons.css" />
-{% endblock %} {% block header %} {% set newPopoverHtml %} {{ hmrcAuiPopover({
-trigger: { id: "aui-header__service-button", title: "New", html: "<span
-  class="aui-header__service-button"
-  ><i class="pi pi-plus" aria-hidden="true"></i> New</span
->" }, popover: { id: "aui-header__service-button-popover", html: "" } }) }} {%
-endset %}
+{% endblock %} 
 
-{{
-  hmrcAuiHeader({
+{% block header %} 
+  {% set newPopoverHtml %} 
+    {{ auiPopover({
+      trigger: { 
+        id: "aui-header__service-button", 
+        title: "New", 
+        html: "<span class="aui-header__service-button"><i class="pi pi-plus" aria-hidden="true"></i> New</span>" 
+      }, 
+      popover: { 
+        id: "aui-header__service-button-popover", 
+        html: "" 
+      } 
+    }) }} 
+  {% endset %}
+
+  {{ auiHeader({
     logo: {
       url: "/public/svg/hmrc-logo-white.svg",
       href: "#",
@@ -36,87 +62,102 @@ endset %}
         icon: "user-solid"
       }
     ]
-  })
-}}
+  }) }}
 
-{{
-  hmrcAuiHeaderTabs({
+  {{ auiNavigation({
     homeTab: {
       active: true
     }
-  })
-}}
-{% endblock %} {% block content %}
+  }) }}
+{% endblock %} 
+
+{% block content %}
 <div class="{{ auiMainClasses }}">
-  {% block beforePage %} {% set formHtml %}
-  {{
-    govukButton({
-      text: "View claim replay",
-      classes: "govuk-button govuk-button--secondary",
-      href: "/claim-child-benefit/auth/post-print/claim-replay.html"
-    })
-  }}
-  {% endset %} {{ hmrcAuiInformationBanner({ bannerItems: [ { html: "
-  <div class="aui-flex" style="--aui-flex-gap: 8px">
+  {% block beforePage %} 
+    {% set formHtml %}
+      {{ govukButton({
+        text: "View claim replay",
+        classes: "govuk-button govuk-button--secondary",
+        href: "/claim-child-benefit/auth/post-print/claim-replay.html"
+      }) }}
+    {% endset %} 
+    
+    {{ hmrcAuiInformationBanner({ 
+      bannerItems: [ 
+        { 
+          html: "<div class="aui-flex" style="--aui-flex-gap: 8px">
     <i style="font-size: 40px" class="pi pi-user"></i>
     <p class="aui-information-banner__heading">Unknown customer</p>
-  </div>
-  " }, { heading: "Customer information", html: "" }, { heading: "Some other
-  heading", html: "" }, { heading: "Relationship", html: "" }, { heading:
-  "Forms", html: formHtml } ] }) }} {% endblock %}
+  </div>" 
+        }, 
+        { 
+          heading: "Customer information", 
+          html: "" 
+        }, 
+        { 
+          heading: "Some other heading", 
+          html: "" 
+        }, 
+        { 
+          heading: "Relationship", 
+          html: ""
+        }, 
+        { 
+          heading: "Forms", 
+          html: formHtml 
+        } 
+      ] 
+    }) }} 
+  {% endblock %}
 
   <section class="{{ auiSectionClasses }}" aria-label="Adviser UI page">
     {% if pageHeading %}
-    <h1 class="govuk-heading-l aui-page-heading">{{ pageHeading }}</h1>
+      <h1 class="govuk-heading-l aui-page-heading">{{ pageHeading }}</h1>
     {% endif %}
     <div class="{{ auiPageClasses }}">
-      {% block page %} {% set summaryMetaHtml %}
-      {{
-        hmrcConstellationFieldValueList({
-          showHorizontal: true,
-          items: [
-            {
-              showVertical: true,
-              key: {
-                html: "Claim started"
+      {% block page %} 
+        {% set summaryMetaHtml %}
+          {{ auiConstellationFieldValueList({
+            showHorizontal: true,
+            items: [
+              {
+                showVertical: true,
+                key: {
+                  html: "Claim started"
+                },
+                data: {
+                  html: "29 Nov 2029"
+                }
               },
-              data: {
-                html: "29 Nov 2029"
+              {
+                showVertical: true,
+                key: {
+                  html: "Claim received"
+                },
+                data: {
+                  html: "29 Nov 2029"
+                }
               }
-            },
-            {
-              showVertical: true,
-              key: {
-                html: "Claim received"
-              },
-              data: {
-                html: "29 Nov 2029"
-              }
-            }
-          ]
-        })
-      }}
+            ]
+          }) }}
 
-      {{
-        hmrcConstellationFieldValueList({
-          showHorizontal: false,
-          items: [
-            {
-              showVertical: false,
-              key: {
-                html: "Example key"
-              },
-              data: {
-                html: "Example data"
+          {{ auiConstellationFieldValueList({
+            showHorizontal: false,
+            items: [
+              {
+                showVertical: false,
+                key: {
+                  html: "Example key"
+                },
+                data: {
+                  html: "Example data"
+                }
               }
-            }
-          ]
-        })
-      }}
-      {% endset %}
+            ]
+          }) }}
+        {% endset %}
 
-      {{
-        hmrcConstellationCase({
+        {{ auiConstellationCase({
           includeWrapper: true,
           summary: {
             case: {
@@ -170,8 +211,7 @@ endset %}
           utilities: {
             html: "U"
           }
-        })
-      }}
+        }) }}
       {% endblock %}
     </div>
   </section>

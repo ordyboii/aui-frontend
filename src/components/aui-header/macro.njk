@@ -1,0 +1,43 @@
+{% macro auiHeader(options) %}
+<header class="aui-header">
+  <div class="aui-header__service">
+    <a class="aui-header__logo" href="{{ options.logo.href }}" title="{{ options.logo.title }}">
+      <img src="{{ options.logo.url }}" aria-hidden="true" alt="{{ options.logo.title }}">
+    </a>
+    {% if options.serviceName %}
+      <p class="aui-header__service-name govuk-!-margin-bottom-0">
+        {{ options.serviceName }}
+      </p>
+    {% endif %}
+    {% if options.newPopover %}
+      {{ options.newPopover.html | safe }}
+    {% endif %}
+  </div>
+  <div class="aui-header__actions">
+    {% for item in options.actions %}
+      {% if item.popover %}
+        {% set buttonHtml %}
+          <i class="pi pi-{{ item.icon }}" aria-hidden="true"></i>
+        {% endset %}
+
+        {% from "../components/aui-popover/macro.njk" import auiPopover %}
+
+        {{ auiPopover({
+          trigger: {
+            id: item.id,
+            classes: "aui-header__action-button aui-button",
+            html: buttonHtml
+          },
+          popover: {
+            html: item.popover.html
+          }
+        }) }}
+      {% else %}
+        <button id="{{ item.id }}" class="aui-header__action-button aui-button" title="{{ item.title }}">
+          <i class="pi pi-{{ item.icon }}" aria-hidden="true"></i>
+        </button>
+      {% endif %}
+    {% endfor %}
+  </div>
+</header>
+{% endmacro %}
