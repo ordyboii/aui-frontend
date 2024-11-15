@@ -31,5 +31,46 @@
     }
   ],
   "nunjucksPath": ["/"],
-  "nunjucksMacros": []
+  "nunjucksMacros": [
+    {
+      "macroName": "auiHeader",
+      "importFrom": "aui/components/aui-header/macro.njk"
+    },
+    {
+      "macroName": "auiNavigation",
+      "importFrom": "aui/components/aui-navigation/macro.njk"
+    },
+    {
+      "macroName": "auiInformationBanner",
+      "importFrom": "aui/components/aui-information-banner/macro.njk"
+    },
+    {
+      "macroName": "auiSidebar",
+      "importFrom": "aui/components/aui-sidebar/macro.njk"
+    },
+    {
+      "macroName": "auiModal",
+      "importFrom": "aui/components/aui-modal/macro.njk"
+    },
+    {
+      "macroName": "auiPopover",
+      "importFrom": "aui/components/aui-popover/macro.njk"
+    },
+    {
+      "macroName": "auiConstellationCase",
+      "importFrom": "aui/components/aui-constellation-case/macro.njk"
+    },
+    {
+      "macroName": "auiConstellationMetaList",
+      "importFrom": "aui/components/aui-constellation-meta-list/macro.njk"
+    },
+    {
+      "macroName": "auiConstellationFieldValueList",
+      "importFrom": "aui/components/aui-constellation-field-value-list/macro.njk"
+    },
+    {
+      "macroName": "auiConstellationBanner",
+      "importFrom": "aui/components/aui-constellation-banner/macro.njk"
+    }
+  ]
 }
