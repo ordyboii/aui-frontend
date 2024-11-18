@@ -7,16 +7,9 @@
       "versionHistory": "https://github.com/ordyboii/aui-frontend/releases"
     }
   },
-  "assets": [
-    "/aui/assets"
-  ],
-  "stylesheets": [
-    "/aui/style.css", 
-    "/aui/assets/styles/pega-icons.css"
-  ],
-  "scripts": [
-    "/aui/aui-frontend.js"
-  ],
+  "assets": ["/aui/assets"],
+  "stylesheets": ["/aui/style.css", "/aui/assets/styles/pega-icons.css"],
+  "scripts": ["/aui/aui-frontend.js"],
   "templates": [
     {
       "path": "/aui/templates/aui.njk",
@@ -34,9 +27,7 @@
       "type": "nunjucks"
     }
   ],
-  "nunjucksPaths": [
-    "/"
-  ],
+  "nunjucksPaths": ["/"],
   "importNunjucksMacrosInto": [
     "/aui/templates/aui.njk",
     "/aui/templates/aui-with-sidebar.njk",

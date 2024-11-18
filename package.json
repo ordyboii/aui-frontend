@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vite build",
     "check": "npm run lint && npm run format",
-    "lint": "eslint . --fix",
+    "lint": "eslint .",
     "format": "prettier . --write",
     "prepare": "husky"
   },
