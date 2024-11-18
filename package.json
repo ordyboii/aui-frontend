@@ -16,6 +16,11 @@
     "name": "Ordyboii"
   },
   "license": "Apache-2.0",
+  "files": [
+    "aui",
+    "govuk-prototype-kit.config.json",
+    "LICENSE"
+  ],
   "dependencies": {
     "govuk-frontend": "^5.7.1"
   },
