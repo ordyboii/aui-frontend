@@ -1,17 +1,21 @@
 {
-  "pluginDependencies": [
-    {
-      "packageName": "govuk-frontend",
-      "minVersion": "5.7.1"
+  "meta": {
+    "description": "Design patterns for AUI frontend.",
+    "urls": {
+      "documentation": "https://aui-frontend-plugin.onrender.com",
+      "releaseNotes": "https://github.com/ordyboii/aui-frontend/releases/tag/v{{version}}",
+      "versionHistory": "https://github.com/ordyboii/aui-frontend/releases"
     }
+  },
+  "assets": [
+    "/aui/assets"
   ],
-  "assets": ["/assets/", "/images/profile.png"],
-  "stylesheets": ["/aui.css"],
-  "scripts": ["/aui.js"],
-  "importNunjucksMacrosInto": [
-    "/aui/layouts/aui.njk",
-    "/aui/layouts/aui-with-sidebar.njk",
-    "/aui/layouts/aui-with-case.njk"
+  "stylesheets": [
+    "/aui/style.css", 
+    "/aui/assets/styles/pega-icons.css"
+  ],
+  "scripts": [
+    "/aui/aui-frontend.js"
   ],
   "templates": [
     {
@@ -30,7 +34,14 @@
       "type": "nunjucks"
     }
   ],
-  "nunjucksPath": ["/"],
+  "nunjucksPaths": [
+    "/"
+  ],
+  "importNunjucksMacrosInto": [
+    "/aui/templates/aui.njk",
+    "/aui/templates/aui-with-sidebar.njk",
+    "/aui/templates/aui-with-case.njk"
+  ],
   "nunjucksMacros": [
     {
       "macroName": "auiHeader",

@@ -16,24 +16,19 @@ ADVISER UI
 {% set mainClasses = "aui-container" %}
 {% set containerClasses = "aui-container" %}
 
-{% block stylesheets %}
-  {{ super() }}
-  <link rel="stylesheet" href="/public/sass/pega-icons.css">
-{% endblock %}
-
 {% block header %}
   {% set newPopoverHtml %}
-  {{ auiPopover({
-    trigger: {
-      id: "aui-header__service-button",
-      title: "New",
-      html: "<span class='aui-header__service-button'><i class='pi pi-plus' aria-hidden='true'></i> New</span>"
-    },
-    popover: {
-      id: "aui-header__service-button-popover",
-      html: ""
-    }
-  }) }}
+    {{ auiPopover({
+      trigger: {
+        id: "aui-header__service-button",
+        title: "New",
+        html: "<span class='aui-header__service-button'><i class='pi pi-plus' aria-hidden='true'></i> New</span>"
+      },
+      popover: {
+        id: "aui-header__service-button-popover",
+        html: ""
+      }
+    }) }}
   {% endset %}
 
   {{ auiHeader({
@@ -70,14 +65,33 @@ ADVISER UI
 {% endblock %}
 
 {% block content %}
-  <div class="{{ auiMainClasses }}">
-    {% block beforePage %}{% endblock %}
+  <div class="{{ auiMainClasses or "aui-grid-one-quarter" }}">
+    {% block beforePage %}
+      {{ auiSidebar({
+        items: [
+          {
+            icon: "case",
+            href: "#",
+            active: true,
+            text: "My work"
+          },
+          {
+            icon: "gauge",
+            href: "#",
+            active: false,
+            text: "Dashboard"
+          }
+        ]
+      }) }}
+    {% endblock %}
 
     <section class="{{ auiSectionClasses }}" aria-label="Adviser UI page">
       {% if pageHeading %}
         <h1 class="govuk-heading-l aui-page-heading">{{ pageHeading }}</h1>
+      {% else %}
+        <h1 class="govuk-heading-l aui-page-heading">Welcome John Smith</h1>
       {% endif %}
-      <div class="{{ auiPageClasses }}">
+      <div class="{{ auiPageClasses or "aui-page-content" }}">
         {% block page %}{% endblock %}
       </div>
     </section>

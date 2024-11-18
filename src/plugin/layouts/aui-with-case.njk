@@ -18,18 +18,19 @@ ADVISER UI
 {% set mainClasses = "aui-container" %} 
 {% set containerClasses = "aui-container" %} 
 
-{% block stylesheets %}
-{{ super() }}
-<link rel="stylesheet" href="/public/sass/pega-icons.css" />
-{% endblock %} 
-
 {% block header %} 
   {% set newPopoverHtml %} 
+    {% set popoverHtml %}
+      <span class="aui-header__service-button">
+        <i class="pi pi-plus" aria-hidden="true"></i> New
+      </span>
+    {% endset %}
+
     {{ auiPopover({
       trigger: { 
         id: "aui-header__service-button", 
         title: "New", 
-        html: "<span class="aui-header__service-button"><i class="pi pi-plus" aria-hidden="true"></i> New</span>" 
+        html: popoverHtml 
       }, 
       popover: { 
         id: "aui-header__service-button-popover", 
@@ -82,13 +83,19 @@ ADVISER UI
       }) }}
     {% endset %} 
     
-    {{ hmrcAuiInformationBanner({ 
+    {% set unknownCustomerHtml %}
+      <div class="aui-flex" style="--aui-flex-gap: 8px">
+        <i style="font-size: 40px" class="pi pi-user"></i>
+        <p class="aui-information-banner__heading">
+          Unknown customer
+        </p>
+      </div>
+    {% endset %}
+    
+    {{ auiInformationBanner({ 
       bannerItems: [ 
         { 
-          html: "<div class="aui-flex" style="--aui-flex-gap: 8px">
-    <i style="font-size: 40px" class="pi pi-user"></i>
-    <p class="aui-information-banner__heading">Unknown customer</p>
-  </div>" 
+          html: unknownCustomerHtml 
         }, 
         { 
           heading: "Customer information", 

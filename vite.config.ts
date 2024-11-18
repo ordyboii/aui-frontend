@@ -2,12 +2,12 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-  publicDir: "src/assets",
+  publicDir: "src/plugin",
   build: {
     outDir: "aui",
     lib: {
-      entry: resolve(__dirname, "src/main.ts"),
-      formats: ["es"],
+      entry: resolve(__dirname, "src/aui-frontend.ts"),
+      formats: ["cjs"],
     },
   },
 });
