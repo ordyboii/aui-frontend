@@ -1,8 +1,8 @@
 ﻿@font-face {
   font-family: "UIKitIcons";
   src:
-    url("fonts/pega-icons.woff2?") format("woff2"),
-    url("fonts/pega-icons.woff?") format("woff");
+    url("../fonts/pega-icons.woff2?") format("woff2"),
+    url("../fonts/pega-icons.woff?") format("woff");
 }
 
 .pi,
