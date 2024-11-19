@@ -2,7 +2,7 @@
   "meta": {
     "description": "Design patterns for AUI frontend.",
     "urls": {
-      "documentation": "https://aui-frontend-plugin.onrender.com",
+      "documentation": "https://github.com/aui-frontend/docs/01-Homepage.md",
       "releaseNotes": "https://github.com/ordyboii/aui-frontend/releases/tag/v{{version}}",
       "versionHistory": "https://github.com/ordyboii/aui-frontend/releases"
     }
