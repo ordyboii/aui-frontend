@@ -1,0 +1,45 @@
+{# This popover is not 100% accessible as it doesn't trap focus, nor reposition on window resize #}
+{% macro auiPopover(options) %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const trigger = document.querySelector("#{{ options.trigger.id }}");
+    const popover = document.querySelector("#{{ options.popover.id }}");
+
+    trigger.addEventListener("click", togglePopover);
+
+    trigger.addEventListener("keyup", function (event) {
+      if (event.key === "Enter" || event.key === "Space") {
+        togglePopover(event);
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!popover.contains(event.target) && !trigger.contains(event.target)) {
+        popover.classList.remove("aui-popover__content--visible")
+        trigger.ariaExpanded = false;
+      }
+    });
+
+    function togglePopover(event) {
+      popover.classList.toggle("aui-popover__content--visible")
+      if (popover.classList.contains("aui-popover__content--visible")) {
+        trigger.ariaExpanded = true;
+        popover.focus();
+      } else {
+        trigger.ariaExpanded = false
+      }
+    }
+  })
+</script>
+
+<div class="aui-popover">
+  <button class="{% if options.trigger.classes %}{{ options.trigger.classes }}{% else %}aui-button{% endif %}" 
+    id="{{ options.trigger.id }}" title="{{ options.trigger.title }}. Press Enter key or Spacebar to open the menu" aria-expanded="false"
+    aria-haspopup="true" aria-controls="{{ options.popover.id }}">
+    {{ options.trigger.html | safe }}
+  </button>
+  <div class="aui-popover__content" id="{{ options.popover.id }}" aria-labelledby="{{ options.trigger.id }}">
+    {{ options.popover.html | safe }}
+  </div>
+</div>
+{% endmacro %}

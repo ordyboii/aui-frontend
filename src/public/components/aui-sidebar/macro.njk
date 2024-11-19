@@ -1,0 +1,12 @@
+{% macro auiSidebar(options) %}
+  <ul class="aui-sidebar" aria-label="Adviser UI sidebar navigation">
+    {% for item in options.items %}
+      <li class="{% if item.active %}aui-sidebar__item--active{% endif %}">
+        <a href="{{ item.href }}" style="margin: 0 !important; color: currentColor !important;" class="aui-sidebar__item govuk-body-s govuk-link--no-underline govuk-link--no-visited-state govuk-!-margin-0">
+          <i class="pi {% if item.active %}pi-{{ item.icon }}-solid{% else %}pi-{{ item.icon }}{% endif %}"></i>
+          {{ item.text or item.html | safe }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}

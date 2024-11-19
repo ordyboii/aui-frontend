@@ -8,8 +8,8 @@
     }
   },
   "assets": ["/aui/assets"],
-  "stylesheets": ["/style.css", "/aui/assets/styles/pega-icons.css"],
-  "scripts": ["/aui-frontend.js"],
+  "stylesheets": ["/aui/style.css", "/aui/assets/css/pega-icons.css"],
+  "scripts": ["/aui/aui-frontend.js"],
   "templates": [
     {
       "path": "/aui/templates/aui.njk",

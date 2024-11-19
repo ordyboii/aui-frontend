@@ -1,0 +1,104 @@
+:root {
+  --hmrc-green: #007c7b;
+  --hmrc-green-offset: #3e5160;
+  --govuk-success: #00703c;
+  --govuk-blue: #1d70b8;
+  --govuk-black: #0b0c0c;
+  --govuk-white: #ffffff;
+  --govuk-focus: #ffdd00;
+  --govuk-dark-grey: #505a5f;
+  --govuk-mid-grey: #b1b4b6;
+  --govuk-light-grey: #f3f2f1;
+  --aui-wrapper: #cbd3d7;
+  --govuk-color-focus-tint: rgba(255, 221, 0, 0.25);
+  --govuk-red: #b10e1e;
+  --govuk-error-red: #b10e1e;
+  --govuk-mellow-red: #df3034;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica",
+    sans-serif;
+  color: var(--govuk-black);
+}
+
+.pi {
+  margin-right: 0 !important;
+}
+
+.aui-flex {
+  display: flex;
+  align-items: center;
+  gap: var(--aui-flex-gap, 4px);
+}
+
+.aui-container {
+  margin: 0;
+  padding: 0;
+  height: calc(100vh - 76.75px);
+  max-width: 100%;
+}
+
+.aui-button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+.aui-button:focus {
+  border-color: var(--govuk-focus);
+  outline: 3px solid transparent;
+  box-shadow: inset 0 0 0 1px var(--govuk-focus);
+}
+
+.aui-button:focus:not(:active):not(:hover) {
+  border-color: var(--govuk-focus);
+  color: var(--govuk-black);
+  background-color: var(--govuk-focus);
+  box-shadow: 0 2px 0 var(--govuk-black);
+}
+
+.aui-grid-one-quarter {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+}
+
+.aui-page-content {
+  padding: 20px;
+}
+
+.aui-page-heading {
+  width: 100%;
+  background: var(--govuk-light-grey);
+  padding: 10px;
+  margin: 0;
+}
+
+.aui-link {
+  font-family:
+    GDS Transport,
+    arial,
+    sans-serif;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: underline;
+  text-decoration-thickness: auto;
+  text-decoration-thickness: max(1px, 0.0625rem);
+  text-underline-offset: 0.1578em;
+}
+
+.aui-link:link {
+  color: var(--hmrc-green);
+}
+
+.aui-link:visited {
+  color: var(--hmrc-green);
+}
