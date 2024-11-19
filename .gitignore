@@ -1,2 +1,6 @@
 node_modules
-dist
+
+package/*
+!package/govuk-prototype-kit.config.json
+!package/package.json
+!package/README.md

@@ -1,0 +1,12 @@
+{
+  "name": "aui-frontend",
+  "version": "0.0.0-development",
+  "description": "Design patterns for Adviser UI",
+  "author": {
+    "name": "Ordyboii"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "govuk-frontend": "^5.7.1"
+  }
+}

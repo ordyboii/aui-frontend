@@ -1,4 +1,4 @@
 export default {
-  pkgRoot: "dist",
+  pkgRoot: "package",
   branches: ["main", { name: "next", prerelease: true }],
 };
