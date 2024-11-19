@@ -1,0 +1,10 @@
+{% macro auiConstellationMetaList(options) %}
+  <ul class="constellation-meta-list">
+    {% for item in options.items %}
+      <li>{{ item.html | safe }}</li>
+      {% if not loop.first %}
+        <li role="separator">•</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endmacro %}

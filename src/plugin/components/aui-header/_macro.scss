@@ -1,0 +1,61 @@
+.aui-header {
+  background-color: var(--hmrc-green);
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.aui-header__logo {
+  width: 100px;
+}
+
+.aui-header__service {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.aui-header__service-name {
+  color: var(--govuk-white);
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.aui-header__service-button {
+  margin: 0;
+  font-size: 14px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--govuk-white);
+}
+
+.aui-header__service-button:hover {
+  background: none;
+}
+
+.aui-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aui-header__action-button {
+  margin: 0;
+  padding: 4px;
+  font-size: 16px;
+  background: var(--govuk-white);
+  border: 0;
+  border-radius: 50%;
+  color: var(--govuk-black);
+}
+
+.aui-header__action-button:hover {
+  background: var(--govuk-white);
+  color: var(--govuk-black);
+}
