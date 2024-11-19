@@ -5,11 +5,20 @@ import { copyFile } from "fs/promises";
 export default defineConfig({
   plugins: [
     {
-      name: "Copy package.json",
+      name: "Copy plugin files for npm",
       async closeBundle() {
-        await copyFile(resolve("package.json"), resolve("dist/package.json"));
-        await copyFile(resolve("LICENSE"), resolve("dist/LICENSE"));
-        await copyFile(resolve("README.md"), resolve("dist/README.md"));
+        await copyFile(
+          resolve(__dirname, "package.json"),
+          resolve(__dirname, "dist/package.json")
+        );
+        await copyFile(
+          resolve(__dirname, "LICENSE"),
+          resolve(__dirname, "dist/LICENSE")
+        );
+        await copyFile(
+          resolve(__dirname, "README.md"),
+          resolve(__dirname, "dist/README.md")
+        );
       },
     },
   ],
