@@ -1,0 +1,52 @@
+{% macro auiConstellationBanner(options) %}
+  {% set type = options.type %}
+
+  <div role="alert" class="constellation-banner govuk-!-margin-bottom-4">
+    <div role="presentation" class="constellation-banner__control {% if type == "error" %}constellation-banner__control--urgent{% endif %}">
+      <i class="pi pi-warn-solid" aria-hidden="true"></i>
+    </div>
+    <div class="constellation-banner__layout">
+      {% if options.errors %}
+        <details class="govuk-details govuk-!-margin-bottom-0">
+          <summary class="govuk-details__summary" style="color: var(--govuk-black);">
+            <h2 class="govuk-body-s govuk-!-margin-bottom-0">
+              Errors <span class="hmrc-notification-badge">{{ options.errors | length }}</span>
+            </h2>
+          </summary>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            {% for item in options.errors %}
+              <li class="govuk-body-s govuk-!-margin-bottom-0">
+                <span class="govuk-!-font-weight-bold">
+                  {{ item.title.text or item.title.html | safe }}
+                </span>
+                <span class="govuk-!-font-weight-regular">
+                  {{ item.message.text or item.message.html | safe }}
+                </span>
+              </li>
+            {% endfor %}
+          </ul>
+        </details>
+        <button class="constellation-banner__button">
+          <i role="presentation" class="pi pi-close"></i>
+          <span class="govuk-visually-hidden">Close banner</span>
+        </button>
+      {% elif options.error %}
+        <div class="constellation-banner__message govuk-body-s govuk-!-margin-bottom-0">
+          <h2 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-0">
+            {{ options.error.title.text or options.error.title.html | safe }}
+          </h2>
+          <span class="govuk-!-font-weight-regular">
+            {{ options.error.message.text or options.error.message.html | safe }}
+          </span>
+          <span class=" govuk-visually-hidden">1</span>
+        </div>
+        <button class="constellation-banner__button">
+          <i class="pi pi-close" aria-hidden="true"></i>
+          <span class="govuk-visually-hidden">Close banner</span>
+        </button>
+      {% else %}
+        {# Show nothing #}
+      {% endif %}
+    </div>
+  </div>
+{% endmacro %}

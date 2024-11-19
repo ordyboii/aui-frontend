@@ -1,0 +1,101 @@
+{% macro auiConstellationCase(options) %}
+  <div class="constellation-wrapper {% if options.includeWrapper %}constellation-wrapper--centered{% endif %}">
+    <div class="constellation-case">
+      <section class="constellation-summary" aria-label="Case summary">
+        <div class="constellation-summary__case">
+          <div class="constellation-case__info">
+            <div class="constellation-case__icon">
+              <i class="pi pi-{{ options.summary.case.icon }}" aria-hidden="true"></i>
+            </div>
+            <h1 class="constellation-case__label">
+              <span class="govuk-!-font-weight-bold">{{ options.summary.case.label }}</span>
+              <span>{{ options.summary.case.id }}</span>
+            </h1>
+          </div>
+          {% set caseOptionsHtml %}
+          <ul class="govuk-list govuk-!-margin-0">
+            {% for item in options.summary.case.options %}
+            <li>
+              <a href="{{ item.href }}" id="{{ item.id }}" style="color: var(--govuk-black);"
+                class="govuk-body-s govuk-link--no-underline govuk-link--no-visited-state">
+                {{ item.html | safe }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endset %}
+
+          {% from "../aui-popover/macro.njk" import auiPopover %}
+
+          {{ auiPopover({
+            trigger: {
+              id: "constellation-case__button",
+              html: "<i class='govuk-body-s pi pi-more' style='color: var(--govuk-white);' aria-hidden='true'></i>"
+            },
+            popover: {
+              id: "constellation-case__popover",
+              html: caseOptionsHtml
+            }
+          }) }}
+        </div>
+        <div class="constellation-summary__meta">
+          {{ options.summary.meta | safe }}
+        </div>
+        <ul class="constellation-tabs--horizontal">
+          {% for tab in options.summary.tabs %}
+          <li
+            class="constellation-tab--horizontal {% if tab.active %}constellation-tab--horizontal--active{% endif %}">
+            <a href="{{ tab.href }}" style="color: inherit;"
+              class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">
+              {{ tab.text }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      <div class="constellation-content">
+        <section class="constellation-lifecycle" aria-label="Case lifecyle">
+          {% for step in options.lifeCycle %}
+          <span
+            class="constellation-lifecycle__step {% if step.active %}constellation-lifecycle__step--active{% endif %}">
+            {% if step.complete %}
+              <i class="pi pi-check" style="color: var(--govuk-success)" aria-hidden="true"></i>
+            {% endif %}
+            {{ step.text }}
+          </span>
+          {% endfor %}
+        </section>
+        <section class="constellation-tasks" aria-label="Case tasks">
+          {% if options.tasks.label %}
+            {% if options.tasks.label.text %}
+              <h2 class="govuk-body govuk-!-font-weight-bold">
+                {{ options.tasks.label.text }}
+              </h2>
+            {% else %}
+              {{ options.tasks.label.html | safe }}
+            {% endif %}
+          {% endif %}
+          {{ options.tasks.html | safe }}
+        </section>
+        <section class="constellation-tab__panel"
+          aria-label="Tab panel - {% for tab in options.summary.tabs %}{% if tab.active %}{{ tab.text }}{% endif %}{% endfor %}">
+          {% for tab in options.summary.tabs %}
+            {% if tab.active %}
+              {% if not tab.hidePanelHeading %}
+                <h2 class="govuk-body govuk-!-font-weight-bold">
+                  {{ tab.text }}
+                </h2>
+              {% endif %}
+              {{ tab.panel.html | safe }}
+            {% endif %}
+          {% endfor %}
+        </section>
+      </div>
+      <section class="constellation-utilities">
+        <div class="constellation-utilities__card">
+          {{ options.utilities.html | safe }}
+        </div>
+      </section>
+    </div>
+  </div>
+{% endmacro %}

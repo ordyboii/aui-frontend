@@ -1,0 +1,26 @@
+{% macro auiNavigation(options) %}
+<nav class="aui-navigation" aria-label="Adviser UI tabs">
+  <ul class="aui-tabs">
+    <li class="aui-tab {% if options.homeTab.active %}aui-tab--active{% endif %}">
+      <a href="{{ options.homeTab.href }}" style="color: inherit;"
+        class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">
+        <i class="pi pi-home" aria-hidden="true"></i>
+        {% if options.homeTab.text %}{{ options.homeTab.text }}{% else %}Home{% endif %}
+      </a>
+    </li>
+    {% for tab in options.tabs %}
+    <li class="aui-tab {% if tab.active %}aui-tab--active{% endif %}">
+      <a href="{{ tab.href }}" style="color: inherit;"
+        class="govuk-link govuk-link--no-visited-state govuk-link--no-underline">
+        {{ tab.text }}
+        {% if tab.closeTab %}
+        <a href="{{ tab.closeTab.href }}" class="aui-tab__button aui-button" title="Close tab">
+          <i class="pi pi-close" aria-hidden="true"></i>
+        </a>
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endmacro %}
