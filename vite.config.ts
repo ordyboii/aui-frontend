@@ -7,7 +7,7 @@ export default defineConfig({
     {
       name: "Copy plugin files for npm",
       async closeBundle() {
-        await copyFile("package.json", "dist/package.json");
+        await copyFile(__dirname + "package.json", "dist/package.json");
         await copyFile("LICENSE", "dist/LICENSE");
         await copyFile("README.md", "dist/README.md");
       },
