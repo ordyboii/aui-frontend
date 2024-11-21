@@ -1,3 +1,18 @@
+/* Overridden width 300px */
+.aui-modal {
+  min-width: 640px;
+  max-height: 90vh;
+  background: var(--govuk-white);
+  border: 1px solid var(--govuk-black);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.aui-modal:focus {
+  outline: 2px solid var(--govuk-focus);
+  outline-offset: 2px;
+}
+
 .aui-modal-overlay {
   position: absolute;
   top: 0;
@@ -14,16 +29,6 @@
   display: grid;
 }
 
-/* Overridden width 300px */
-.aui-modal {
-  min-width: 640px;
-  max-height: 90vh;
-  background: var(--govuk-white);
-  border: 1px solid var(--govuk-black);
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-
 .aui-modal__header {
   display: flex;
   gap: 8px;
@@ -36,6 +41,11 @@
 .aui-modal__content {
   padding: 12px;
   overflow-y: auto;
+}
+
+.aui-modal__close {
+  width: 24px;
+  height: 24px;
 }
 
 .aui-modal__footer {

@@ -2,7 +2,7 @@
 
 TODO
 
-# Contributping guide for Adviser UI frontend
+# Contributing guide for Adviser UI frontend
 
 Thank you for your consideration to contribute to Adviser UI frontend! Follow the guidelines below to ensure a smooth contribution process.
 
