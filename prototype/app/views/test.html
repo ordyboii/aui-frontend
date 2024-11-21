@@ -1,0 +1,24 @@
+{% extends "aui/layouts/aui-with-sidebar.njk" %}
+
+{% block page %}
+  {{ govukButton({
+    id: "button",
+    text: "Open modal",
+    classes: "govuk-button--secondary"
+  }) }}
+
+  {{ auiModal({
+    trigger: {
+      id: "button"
+    },
+    header: {
+      text: "hello"
+    },
+    content: {
+      html: "hello<button>wdwad</button><a href='/awd'>dwadw</a><input>"
+    },
+    footer: {
+      html: "hello"
+    }
+  }) }}
+{% endblock %}
